@@ -9,6 +9,13 @@ body {
   cursor: none;
 }
 
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+  }
+  
 .top-bar {
   background: #8e0a64;
   color: white;
@@ -418,7 +425,7 @@ header nav ul li .dropdown-menu li a:hover {
 
 .page-header {
   position: relative;
-  background: url('images/contact-bg.jpg') center/cover no-repeat;
+  background: url('images/contact-bg.webp') center/cover no-repeat;
   padding: 100px 20px;
   text-align: center;
   color: #fff;
@@ -646,7 +653,7 @@ header nav ul li .dropdown-menu li a:hover {
 
        .footer {
   background: linear-gradient(rgba(19, 1, 63, 0.92), rgba(35, 2, 67, 0.92)),
-              url('images/footer.jpg') center/cover no-repeat;
+              url('images/footer.webp') center/cover no-repeat;
   color: #fff;
   padding: 60px 0 30px;
   font-family: 'Arial', sans-serif;

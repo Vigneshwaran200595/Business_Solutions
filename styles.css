@@ -10,6 +10,14 @@ body {
   cursor: none;
 }
 
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+}
+
 .top-bar {
   background: #8e0a64;
   color: white;
@@ -531,7 +539,7 @@ header nav ul li .dropdown-menu li a:hover {
     display: none;
   }
   .hero {
-    background-image: url('images/Background_M.png');
+    background-image: url('images/Background_M.webp');
     background-size: cover;
     background-position: center;
   }
@@ -1544,12 +1552,12 @@ body {
 
 
 
-    .card1 { background-image: url("images/cloud.jpg"); }
-    .card2 { background-image: url("images/ai.jpg"); }
-    .card3 { background-image: url("images/cyber.jpg"); }
-    .card4 { background-image: url("images/erp.jpg"); }
-    .card5 { background-image: url("images/data.jpg"); }
-    .card6 { background-image: url("images/mobile.jpg"); }
+    .card1 { background-image: url("images/cloud.webp"); }
+    .card2 { background-image: url("images/ai.webp"); }
+    .card3 { background-image: url("images/cyber.webp"); }
+    .card4 { background-image: url("images/erp.webp"); }
+    .card5 { background-image: url("images/data.webp"); }
+    .card6 { background-image: url("images/mobile.webp"); }
 
     .ring:before,
     .ring:after {
@@ -2359,7 +2367,7 @@ section#testimonial-area .testimonial-content {
 
 .challenge-section {
   position: relative;
-  background: url('images/meeting.jpg')
+  background: url('images/meeting.webp')
     center/cover no-repeat;
   padding: 100px 60px;
   color: #fff;
@@ -2485,7 +2493,7 @@ section#testimonial-area .testimonial-content {
 
 .footer {
   background: linear-gradient(rgba(19, 1, 63, 0.92), rgba(35, 2, 67, 0.92)),
-              url('images/footer.jpg') center/cover no-repeat; /* optional background image */
+              url('images/footer.webp') center/cover no-repeat; /* optional background image */
   color: #fff;
   padding: 60px 0 30px;
   font-family: 'Arial', sans-serif;

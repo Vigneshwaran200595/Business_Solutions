@@ -22,7 +22,7 @@
   </div>
 <header>
   <div class="logo">
-    <img src="Images1/logo.png" alt="logo">
+    <img src="Images1/logo.webp" alt="logo">
   </div>
 
 
@@ -69,7 +69,7 @@
     <div class="team-container">
       
        <div class="team-member" data-animate="bounceInLeft">
-      <img src="Images1/team1.jpg" alt="Member 1">
+      <img src="Images1/team1.webp" alt="Member 1">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>John Doe</h3>
@@ -84,7 +84,7 @@
 
    
     <div class="team-member" data-animate="bounceInUp">
-      <img src="Images1/team2.jpg" alt="Member 2">
+      <img src="Images1/team2.webp" alt="Member 2">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>Mary Smith</h3>
@@ -99,7 +99,7 @@
 
    
     <div class="team-member" data-animate="bounceInRight">
-      <img src="Images1/team3.jpg" alt="Member 3">
+      <img src="Images1/team3.webp" alt="Member 3">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>Robert Lee</h3>
@@ -114,7 +114,7 @@
 
 
     <div class="team-member" data-animate="bounceInLeft">
-      <img src="Images1/team4.jpg" alt="Member 4">
+      <img src="Images1/team4.webp" alt="Member 4">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>Emma Brown</h3>
@@ -129,7 +129,7 @@
 
 
     <div class="team-member" data-animate="bounceInUp">
-      <img src="Images1/team6.jpg" alt="Member 5">
+      <img src="Images1/team6.webp" alt="Member 5">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>Michael Green</h3>
@@ -143,7 +143,7 @@
     </div>
 
     <div class="team-member" data-animate="bounceInRight">
-      <img src="Images1/team5.jpg" alt="Member 6">
+      <img src="Images1/team5.webp" alt="Member 6">
       <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
       <div class="overlay">
         <h3>Sophia White</h3>
@@ -159,9 +159,9 @@
 
   <section class="hero-section">
     <div class="video-box" data-animate="bounceInLeft">
-      <img src="Images1/discuss.jpg" alt="Meeting Image" />
+      <img src="Images1/discuss.webp" alt="Meeting Image" />
       <div class="video-overlay">
-        <i class="fa-solid fa-play"></i>
+        <i class="fa-solid fa-handshake"></i>
       </div>
     </div>
 
@@ -233,7 +233,7 @@
       <div class="contact-banner scroll-animate" data-animate="bounceIn">
     <div class="contact-item">
       <i class="fa-solid fa-envelope"></i>
-      <span>Contact us at <a href="mailto:info@businesssolutions.com">@businesssolutions.com</a></span>
+      <span>Contact us at @businesssolutions.com</span>
     </div>
     <div class="contact-item">
       <i class="fa-solid fa-headset"></i>
@@ -246,7 +246,7 @@
     <div class="footer-container scroll-animate" data-animate="bounceInUp">
 
       <div class="footer-logo-section">
-        <img src="Images1/logo.png" alt="Business Solutions Logo">
+        <img src="Images1/logo.webp" alt="Business Solutions Logo">
         <p>We provide smart, scalable, and secure business solutions to help organizations achieve digital excellence and operational efficiency worldwide.</p>
       </div>
 
@@ -262,21 +262,27 @@
       </div>
 
 
-      <div class="footer-column">
-        <h3>Contact Info</h3>
+<div class="footer-column">
+        <h3>Quick Link</h3>
         <ul>
-          <li><a href="404_1.html">About Us</a></li>
-          <li><a href="404_1.html">Customer Support</a></li>
-          <li><a href="404_1.html">Request a Demo</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html">Our Team</a></li>
           <li><a href="404_1.html">Partner Program</a></li>
-          <li><a href="404_1.html">Careers</a></li>
+          <li><a href="contact1.html">Contact</a></li>
         </ul>
       </div>
 
+
       <div class="footer-column newsletter">
         <h3>Newsletter</h3>
-        <input type="email" placeholder="Enter your email address">
-        <label><input type="checkbox"> I agree to all your terms and policies</label>
+<div class="newsletter-box">
+<input type="email" id="newsletterEmail" placeholder="Enter your email address">
+<button id="sendNewsletter">>></button>
+
+    <span id="newsletter-error" class="error-text"></span>
+</div>
+
         <div class="social-icons">
           <a href="404_1.html"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="404_1.html"><i class="fa-brands fa-x-twitter"></i></a>
@@ -370,6 +376,51 @@ function validateEmail() {
 
     elements.forEach(el => observer.observe(el));
   </script>
+
+  <script>
+// Elements
+const emailInput = document.getElementById("newsletterEmail");
+const sendBtn = document.getElementById("sendNewsletter");
+const errorBox = document.getElementById("newsletter-error");
+
+// Email regex
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Show error INSIDE input box
+function showInputError(msg) {
+  emailInput.classList.add("input-error");
+  emailInput.value = "";
+  emailInput.placeholder = msg;
+
+  // Hide after 2 seconds
+  setTimeout(() => {
+    emailInput.classList.remove("input-error");
+    emailInput.placeholder = "Enter your email address";
+  }, 2000);
+}
+
+sendBtn.addEventListener("click", () => {
+  const email = emailInput.value.trim();
+
+  // Empty field
+  if (email === "") {
+    showInputError("⚠ Please fill the field");
+    return;
+  }
+
+  // Invalid email
+  if (!emailPattern.test(email)) {
+    showInputError("⚠ Enter a valid email");
+    return;
+  }
+
+  // SUCCESS → Redirect
+  window.location.href = "404_1.html";
+});
+</script>
+
+
+
 
 
 </body>

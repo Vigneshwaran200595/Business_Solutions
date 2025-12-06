@@ -15,6 +15,13 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+  }
+  
 body, input {
   font-family: 'Montserrat', sans-serif;
 }
@@ -25,7 +32,7 @@ body, input {
   min-height: 100vh;
   overflow: hidden;
   background-color: #fff;
-  background-image: url('images/sigin.jpg');
+  background-image: url('images/sigin.webp');
   background-size: cover;      
   background-position: center;
   background-repeat: no-repeat;
@@ -363,7 +370,7 @@ form.sign-in-form {
   
   <div class="input-field">
     <i class="fas fa-lock"></i>
-    <input type="password" placeholder="Password" required />
+    <input type="password" id="signinPassword" placeholder="Password" required />
   </div>
 
   <div style="margin-bottom: 10px; text-align: right;">
@@ -389,7 +396,7 @@ form.sign-in-form {
   </div>
   <div class="input-field">
     <i class="fas fa-lock"></i>
-    <input type="password" placeholder="Password" required />
+    <input type="password" id="signupPassword" placeholder="Password" required />
   </div>
   <button type="submit" class="btn">Sign up</button>
   <div style="margin-top: 10px; text-align: right;">
@@ -460,15 +467,65 @@ backToLogin.addEventListener("click", (e) => {
   container.classList.remove("forgot-mode");
 });
 
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    if (form.checkValidity()) {
-      window.location.href = "404.html";
-    } else {
-      form.reportValidity();
-    }
-  });
+
+/* ------------------------
+   PASSWORD VALIDATION RULE
+------------------------- */
+const strongPassword =
+/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+function showPasswordError(input) {
+  input.classList.add("input-error");
+  input.value = "";
+  input.placeholder = "⚠ Weak Password (8+ chars, Upper, Lower, Number, Symbol)";
+  
+  setTimeout(() => {
+    input.classList.remove("input-error");
+    input.placeholder = "Password";
+  }, 2000);
+}
+
+
+/* ------------------------
+       SIGN-IN SUBMIT
+------------------------- */
+document.querySelector(".sign-in-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const pass = document.getElementById("signinPassword");
+
+  if (!strongPassword.test(pass.value.trim())) {
+    showPasswordError(pass);
+    return;
+  }
+
+  window.location.href = "404.html";
+});
+
+
+/* ------------------------
+       SIGN-UP SUBMIT
+------------------------- */
+document.querySelector(".sign-up-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const pass = document.getElementById("signupPassword");
+
+  if (!strongPassword.test(pass.value.trim())) {
+    showPasswordError(pass);
+    return;
+  }
+
+  window.location.href = "404.html";
+});
+
+
+/* ------------------------
+     FORGOT PASSWORD SUBMIT
+------------------------- */
+document.querySelector(".forgot-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  window.location.href = "404.html";
 });
 </script>
 

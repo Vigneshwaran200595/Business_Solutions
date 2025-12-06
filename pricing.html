@@ -22,7 +22,7 @@
   </div>
 <header>
   <div class="logo">
-    <img src="Images1/logo.png" alt="logo">
+    <img src="Images1/logo.webp" alt="logo">
   </div>
 
 
@@ -152,15 +152,15 @@
   </div>
 
 
-  <img src="Images1/megaphone.png" class="icon1 icon-left" alt="">
-  <img src="Images1/target.png" class="icon1 icon-right" alt="">
-  <img src="Images1/rocket.png" class="icon1 icon-bottom" alt="">
+  <img src="Images1/megaphone.webp" class="icon1 icon-left" alt="">
+  <img src="Images1/target.webp" class="icon1 icon-right" alt="">
+  <img src="Images1/rocket.webp" class="icon1 icon-bottom" alt="">
 </section>
 
     <div class="contact-banner scroll-animate" data-animate="bounceIn">
     <div class="contact-item">
       <i class="fa-solid fa-envelope"></i>
-      <span>Contact us at <a href="mailto:info@businesssolutions.com">@businesssolutions.com</a></span>
+      <span>Contact us at @businesssolutions.com</span>
     </div>
     <div class="contact-item">
       <i class="fa-solid fa-headset"></i>
@@ -174,7 +174,7 @@
     <div class="footer-container scroll-animate" data-animate="bounceInUp">
 
       <div class="footer-logo-section">
-        <img src="Images1/logo.png" alt="Business Solutions Logo">
+        <img src="Images1/logo.webp" alt="Business Solutions Logo">
         <p>We provide smart, scalable, and secure business solutions to help organizations achieve digital excellence and operational efficiency worldwide.</p>
       </div>
 
@@ -192,22 +192,27 @@
 
 
       <div class="footer-column">
-        <h3>Contact Info</h3>
+        <h3>Quick Link</h3>
         <ul>
-          <li><a href="404_1.html">About Us</a></li>
-          <li><a href="404_1.html">Customer Support</a></li>
-          <li><a href="404_1.html">Request a Demo</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html">Our Team</a></li>
           <li><a href="404_1.html">Partner Program</a></li>
-          <li><a href="404_1.html">Careers</a></li>
+          <li><a href="contact1.html">Contact</a></li>
         </ul>
       </div>
 
 
       <div class="footer-column newsletter">
         <h3>Newsletter</h3>
-        <input type="email" placeholder="Enter your email address">
-        <label><input type="checkbox"> I agree to all your terms and policies</label>
-        <div class="social-icons">
+<div class="newsletter-box">
+<input type="email" id="newsletterEmail" placeholder="Enter your email address">
+<button id="sendNewsletter">>></button>
+
+    <span id="newsletter-error" class="error-text"></span>
+</div>
+
+<div class="social-icons">
           <a href="404_1.html"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="404_1.html"><i class="fa-brands fa-x-twitter"></i></a>
           <a href="404_1.html"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -296,6 +301,51 @@ function validateEmail() {
   }
 }
 </script>
+
+
+<script>
+// Elements
+const emailInput = document.getElementById("newsletterEmail");
+const sendBtn = document.getElementById("sendNewsletter");
+const errorBox = document.getElementById("newsletter-error");
+
+// Email regex
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Show error INSIDE input box
+function showInputError(msg) {
+  emailInput.classList.add("input-error");
+  emailInput.value = "";
+  emailInput.placeholder = msg;
+
+  // Hide after 2 seconds
+  setTimeout(() => {
+    emailInput.classList.remove("input-error");
+    emailInput.placeholder = "Enter your email address";
+  }, 2000);
+}
+
+sendBtn.addEventListener("click", () => {
+  const email = emailInput.value.trim();
+
+  // Empty field
+  if (email === "") {
+    showInputError("⚠ Please fill the field");
+    return;
+  }
+
+  // Invalid email
+  if (!emailPattern.test(email)) {
+    showInputError("⚠ Enter a valid email");
+    return;
+  }
+
+  // SUCCESS → Redirect
+  window.location.href = "404_1.html";
+});
+</script>
+
+
 
 
 
